@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+	<table class="table">
+		<thead>
+			<tr>
+				{% for attribute in teams[0].keys() %}
+					<th>{{ attribute.capitalize().replace("_", " ") }}</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for team in teams %} 
+			<tr>
+				{% for attribute in team %}
+				<td>
+					<a href="{{ url_for('team', team_name=team['full_name']) }}">{{ team[attribute] }}</a>
+				</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+</table>
+{% endblock content %}
